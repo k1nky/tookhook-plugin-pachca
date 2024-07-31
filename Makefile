@@ -1,5 +1,6 @@
 SHELL:=/bin/bash
 STATICCHECK=$(shell which staticcheck)
+PLUGIN_NAME=pachca
 
 .DEFAULT_GOAL := build
 
@@ -20,10 +21,10 @@ cover:
 	go tool cover -html cover.out -o cover.html
 
 build: gvt 
-	CGO_ENABLED=0 go build -o build/pachca cmd/*.go
+	CGO_ENABLED=0 go build -o build/${PLUGIN_NAME} cmd/*.go
 
 plugin-dev:
-	go build -o dev/pachca cmd/*.go
+	go build -o dev/${PLUGIN_NAME} cmd/*.go
 
 prepare:
 	go mod tidy

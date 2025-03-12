@@ -48,12 +48,17 @@ func (p Plugin) Forward(ctx context.Context, r plugin.Receiver, data []byte) ([]
 	chat := strings.Split(opts.Chat, "/")
 	pch := pachca.NewPachca(opts.Token)
 	m := pachca.MessagePayload{Message: pachca.Message{
-		EntityType: chat[0],
-		EntityId:   chat[1],
-		Content:    string(data),
+		EntityType:       chat[0],
+		EntityId:         chat[1],
+		Content:          string(data),
+		DisplayName:      opts.DisplayName,
+		DisplayAvatarUrl: opts.DisplayAvatarUrl,
 	}}
 	response, err := pch.Send(m)
 	p.log.Debugf("forward to %s with response: %s", chat, string(response))
+	if err != nil {
+		err = status.Error(codes.Unavailable, err.Error())
+	}
 	return response, err
 }
 

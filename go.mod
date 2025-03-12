@@ -1,6 +1,8 @@
 module github.com/k1nky/tookhook-plugin-pachca
 
-go 1.20
+go 1.21
+
+toolchain go1.22.7
 
 require (
 	github.com/hashicorp/go-plugin v1.6.1

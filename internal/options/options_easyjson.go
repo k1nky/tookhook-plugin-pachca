@@ -40,6 +40,10 @@ func easyjson24099d24DecodeGithubComK1nkyTookhookPluginPachcaInternalOptions(in 
 			out.Chat = string(in.String())
 		case "token":
 			out.Token = string(in.String())
+		case "display_name":
+			out.DisplayName = string(in.String())
+		case "display_avatar_url":
+			out.DisplayAvatarUrl = string(in.String())
 		default:
 			in.SkipRecursive()
 		}
@@ -63,6 +67,16 @@ func easyjson24099d24EncodeGithubComK1nkyTookhookPluginPachcaInternalOptions(out
 		const prefix string = ",\"token\":"
 		out.RawString(prefix)
 		out.String(string(in.Token))
+	}
+	{
+		const prefix string = ",\"display_name\":"
+		out.RawString(prefix)
+		out.String(string(in.DisplayName))
+	}
+	{
+		const prefix string = ",\"display_avatar_url\":"
+		out.RawString(prefix)
+		out.String(string(in.DisplayAvatarUrl))
 	}
 	out.RawByte('}')
 }

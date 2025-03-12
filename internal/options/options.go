@@ -13,8 +13,10 @@ var (
 //go:generate easyjson options.go
 //easyjson:json
 type PluginOptions struct {
-	Chat  string `json:"chat"`
-	Token string `json:"token"`
+	Chat             string `json:"chat"`
+	Token            string `json:"token"`
+	DisplayName      string `json:"display_name"`
+	DisplayAvatarUrl string `json:"display_avatar_url"`
 }
 
 func New(encoded []byte) (PluginOptions, error) {

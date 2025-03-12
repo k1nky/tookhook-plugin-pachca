@@ -24,9 +24,11 @@ type MessagePayload struct {
 }
 
 type Message struct {
-	EntityType string `json:"entity_type"`
-	EntityId   string `json:"entity_id"`
-	Content    string `json:"content"`
+	EntityType       string `json:"entity_type"`
+	EntityId         string `json:"entity_id"`
+	Content          string `json:"content"`
+	DisplayName      string `json:"display_name,omitempty"`
+	DisplayAvatarUrl string `json:"display_avatar_url,omitempty"`
 }
 
 func NewPachca(token string) *Adapter {
